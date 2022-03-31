@@ -75,4 +75,21 @@ class IsEarlyAdopterUserControllerTest extends TestCase
 
         $response->assertStatus(Response::HTTP_OK)->assertExactJson(['earlyAdopter' => false]);
     }
+    /**
+     * @test
+     */
+    public function gettinUserId()
+    {
+        $user = new User(99988, 'email@email.com');
+
+        $this->userDataSource
+            ->expects('findByEmail')
+            ->with('email@email.com')
+            ->once()
+            ->andReturn($user);
+
+        $response = $this->get('/api/user/email@email.com');
+        $response->assertStatus(Response::HTTP_OK)->assertExactJson(['earlyAdopter' => false]);
+
+    }
 }

@@ -38,4 +38,7 @@ class IsEarlyAdopterService
 
         return $isEarlyAdopter;
     }
+    /**
+     *
+     */
 }
